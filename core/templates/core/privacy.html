@@ -1,0 +1,221 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Politique de Confidentialité - DjanPay{% endblock %}
+
+{% block content %}
+<div style="min-height: 100vh; background: var(--ivory); padding: 120px 20px 60px;">
+    <div class="container container-narrow">
+        <div class="card">
+            <h1 style="font-size: 32px; margin-bottom: 24px; text-align: center;">
+                🔒 Politique de Confidentialité
+            </h1>
+
+            <div style="color: var(--grey); line-height: 1.8;">
+                <!-- Introduction -->
+                <section style="margin-bottom: 32px;">
+                    <p style="font-size: 16px; color: var(--primary-dark); font-weight: 600;">
+                        DjanPay s'engage à protéger la confidentialité et la sécurité de vos données personnelles.
+                    </p>
+                    <p style="margin-top: 12px;">
+                        Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos données
+                        conformément au Règlement Général sur la Protection des Données (RGPD).
+                    </p>
+                </section>
+
+                <!-- Données collectées -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        1. Quelles données collectons-nous ?
+                    </h2>
+                    <p>
+                        Nous collectons uniquement les données strictement nécessaires au fonctionnement du service :
+                    </p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+                        <thead>
+                            <tr style="background: var(--cream);">
+                                <th style="padding: 12px; text-align: left; border: 1px solid var(--beige-light);">Donnée</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid var(--beige-light);">Finalité</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid var(--beige-light);">Base légale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);"><strong>Email</strong></td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Authentification, communication</td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Exécution du contrat</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);"><strong>Nom</strong></td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Personnalisation de l'interface</td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Exécution du contrat</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);"><strong>Mot de passe</strong></td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Sécurité du compte</td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Exécution du contrat</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);"><strong>Adresse IP</strong></td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Sécurité, prévention des abus</td>
+                                <td style="padding: 12px; border: 1px solid var(--beige-light);">Intérêt légitime</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Utilisation -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        2. Comment utilisons-nous vos données ?
+                    </h2>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Gestion de votre compte :</strong> Authentification, accès sécurisé</li>
+                        <li><strong>Communication :</strong> Notifications importantes liées à votre compte</li>
+                        <li><strong>Sécurité :</strong> Détection et prévention des activités suspectes</li>
+                        <li><strong>Amélioration du service :</strong> Statistiques anonymisées (optionnel)</li>
+                    </ul>
+                    <p style="margin-top: 16px; padding: 16px; background: rgba(201, 165, 90, 0.1); border-left: 4px solid var(--secondary-gold); border-radius: 4px;">
+                        <strong>🔒 Nous ne vendons JAMAIS vos données à des tiers.</strong>
+                    </p>
+                </section>
+
+                <!-- Sécurité -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        3. Comment protégeons-nous vos données ?
+                    </h2>
+                    <p>
+                        Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles :
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 16px;">
+                        <div style="padding: 16px; background: var(--cream); border-radius: 8px;">
+                            <div style="font-size: 24px; margin-bottom: 8px;">🔐</div>
+                            <strong>Chiffrement</strong>
+                            <p style="font-size: 14px; margin-top: 4px;">Mots de passe hachés avec PBKDF2</p>
+                        </div>
+                        <div style="padding: 16px; background: var(--cream); border-radius: 8px;">
+                            <div style="font-size: 24px; margin-bottom: 8px;">🌐</div>
+                            <strong>HTTPS</strong>
+                            <p style="font-size: 14px; margin-top: 4px;">Connexion sécurisée SSL/TLS</p>
+                        </div>
+                        <div style="padding: 16px; background: var(--cream); border-radius: 8px;">
+                            <div style="font-size: 24px; margin-bottom: 8px;">🛡️</div>
+                            <strong>Protection CSRF</strong>
+                            <p style="font-size: 14px; margin-top: 4px;">Tokens de sécurité anti-falsification</p>
+                        </div>
+                        <div style="padding: 16px; background: var(--cream); border-radius: 8px;">
+                            <div style="font-size: 24px; margin-bottom: 8px;">⏱️</div>
+                            <strong>Sessions</strong>
+                            <p style="font-size: 14px; margin-top: 4px;">Expiration automatique après 30 min</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Durée de conservation -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        4. Combien de temps conservons-nous vos données ?
+                    </h2>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Compte actif :</strong> Tant que votre compte est actif</li>
+                        <li><strong>Compte supprimé :</strong> 30 jours (délai de rétractation)</li>
+                        <li><strong>Logs de sécurité :</strong> 6 mois maximum</li>
+                    </ul>
+                </section>
+
+                <!-- Vos droits -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        5. Quels sont vos droits ?
+                    </h2>
+                    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+
+                    <div style="margin-top: 16px;">
+                        <div style="margin-bottom: 16px; padding: 16px; border-left: 4px solid var(--secondary-gold); background: var(--ivory);">
+                            <strong style="color: var(--primary-dark);">✅ Droit d'accès</strong>
+                            <p style="margin-top: 4px; font-size: 14px;">Vous pouvez demander une copie de vos données</p>
+                        </div>
+
+                        <div style="margin-bottom: 16px; padding: 16px; border-left: 4px solid var(--secondary-gold); background: var(--ivory);">
+                            <strong style="color: var(--primary-dark);">✏️ Droit de rectification</strong>
+                            <p style="margin-top: 4px; font-size: 14px;">Vous pouvez corriger vos données inexactes</p>
+                        </div>
+
+                        <div style="margin-bottom: 16px; padding: 16px; border-left: 4px solid var(--secondary-gold); background: var(--ivory);">
+                            <strong style="color: var(--primary-dark);">🗑️ Droit à l'effacement</strong>
+                            <p style="margin-top: 4px; font-size: 14px;">Vous pouvez demander la suppression de vos données</p>
+                        </div>
+
+                        <div style="margin-bottom: 16px; padding: 16px; border-left: 4px solid var(--secondary-gold); background: var(--ivory);">
+                            <strong style="color: var(--primary-dark);">📦 Droit à la portabilité</strong>
+                            <p style="margin-top: 4px; font-size: 14px;">Vous pouvez récupérer vos données dans un format structuré</p>
+                        </div>
+
+                        <div style="margin-bottom: 16px; padding: 16px; border-left: 4px solid var(--secondary-gold); background: var(--ivory);">
+                            <strong style="color: var(--primary-dark);">🚫 Droit d'opposition</strong>
+                            <p style="margin-top: 4px; font-size: 14px;">Vous pouvez vous opposer au traitement de vos données</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        6. Comment exercer vos droits ?
+                    </h2>
+                    <p>
+                        Pour toute demande concernant vos données personnelles, contactez-nous :
+                    </p>
+                    <div style="margin-top: 16px; padding: 20px; background: var(--gradient-elegant); border-radius: 8px; border: 1px solid var(--beige-light);">
+                        <p><strong>📧 Email :</strong> <a href="mailto:privacy@djanpay.fr" style="color: var(--secondary-gold);">privacy@djanpay.fr</a></p>
+                        <p><strong>📝 Objet :</strong> Demande RGPD - [Votre demande]</p>
+                        <p style="margin-top: 12px; font-size: 14px; color: var(--grey);">
+                            <i class="fas fa-clock"></i> Nous nous engageons à vous répondre sous 30 jours maximum.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Cookies -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        7. Politique de Cookies
+                    </h2>
+                    <p>
+                        Nous utilisons uniquement des <strong>cookies techniques essentiels</strong> au fonctionnement du site :
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 12px;">
+                        <li><strong>Cookie de session (djanpay_sessionid) :</strong> Maintient votre connexion</li>
+                        <li><strong>Cookie CSRF (djanpay_csrftoken) :</strong> Protège contre les attaques</li>
+                    </ul>
+                    <p style="margin-top: 12px;">
+                        Ces cookies sont strictement nécessaires et ne nécessitent pas de consentement préalable.
+                    </p>
+                </section>
+
+                <!-- Modifications -->
+                <section>
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        8. Modifications de cette politique
+                    </h2>
+                    <p>
+                        Nous pouvons mettre à jour cette politique de confidentialité occasionnellement.
+                        En cas de modification substantielle, nous vous en informerons par email.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Retour -->
+            <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--beige-light);">
+                <a href="{% url 'home' %}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Retour à l'Accueil
+                </a>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--grey); font-size: 14px; margin-top: 24px;">
+            Dernière mise à jour : 26 Novembre 2025
+        </p>
+    </div>
+</div>
+{% endblock %}

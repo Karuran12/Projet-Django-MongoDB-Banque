@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DjanPay - Application bancaire sécurisée">
+    <title>Accueil - DjanPay</title>
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #10b981;
+            --admin-color: #dc2626;
+            --user-color: #059669;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ============================================
+           LAYOUT GÉNÉRAL
+           ============================================ */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-dark);
+        }
+
+        /* ============================================
+           HEADER / NAVIGATION
+           ============================================ */
+        .header {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ============================================
+           CONTAINER PRINCIPAL
+           ============================================ */
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            flex: 1;
+        }
+
+        /* ============================================
+           CARTE D'ACCUEIL
+           ============================================ */
+        .welcome-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-card h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .welcome-card .username {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 1.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .role-badge.admin {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .role-badge.user {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+        }
+
+        /* ============================================
+           MENU ACTIONS
+           ============================================ */
+        .actions-menu {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .actions-menu h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Menu spécifique Admin */
+        .admin-menu .menu-item {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+
+        /* ============================================
+           BOUTON LOGOUT
+           ============================================ */
+        .logout-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-logout:active {
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            box-shadow: var(--shadow);
+            margin-top: auto;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+
+            .welcome-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .welcome-card h1 {
+                font-size: 1.8rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER / NAVIGATION
+         ============================================ -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="logo">
+                Djan<span>Pay</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Accueil</a>
+                {% if is_admin %}
+                    <a href="/admin/">Administration</a>
+                {% endif %}
+                <a href="#">Mon Profil</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         CONTAINER PRINCIPAL
+         ============================================ -->
+    <main class="container">
+        <!-- Carte de bienvenue -->
+        <div class="welcome-card">
+            <h1>Bonjour, <span class="username">{{ username }}</span> !</h1>
+            <p style="color: var(--text-light); font-size: 1.1rem; margin-top: 0.5rem;">
+                Bienvenue sur votre espace DjanPay sécurisé
+            </p>
+
+            <!-- Badge de rôle -->
+            <div class="role-badge {% if is_admin %}admin{% else %}user{% endif %}">
+                {% if is_admin %}
+                    🔐 Administrateur
+                {% else %}
+                    👤 Utilisateur
+                {% endif %}
+            </div>
+
+            <p style="color: var(--text-light); margin-top: 1rem;">
+                Vous êtes connecté en tant que : <strong>{{ user_role }}</strong>
+            </p>
+        </div>
+
+        <!-- Menu d'actions -->
+        <div class="actions-menu {% if is_admin %}admin-menu{% endif %}">
+            <h2>
+                {% if is_admin %}
+                    🛠️ Panneau d'Administration
+                {% else %}
+                    📊 Vos Actions Rapides
+                {% endif %}
+            </h2>
+
+            <div class="menu-grid">
+                {% if is_admin %}
+                    <!-- Menu Admin -->
+                    <a href="/admin/" class="menu-item">
+                        <div class="icon">👥</div>
+                        <h3>Gérer les Utilisateurs</h3>
+                        <p>Voir et modifier les comptes utilisateurs</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">📊</div>
+                        <h3>Statistiques</h3>
+                        <p>Consulter les statistiques globales</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">⚙️</div>
+                        <h3>Configuration</h3>
+                        <p>Paramètres système</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">🔒</div>
+                        <h3>Sécurité</h3>
+                        <p>Logs et audits de sécurité</p>
+                    </a>
+                {% else %}
+                    <!-- Menu User -->
+                    <a href="#" class="menu-item">
+                        <div class="icon">💰</div>
+                        <h3>Mon Compte</h3>
+                        <p>Consulter mon solde</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">💸</div>
+                        <h3>Transferts</h3>
+                        <p>Effectuer un virement</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">📜</div>
+                        <h3>Historique</h3>
+                        <p>Voir mes transactions</p>
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <div class="icon">👤</div>
+                        <h3>Mon Profil</h3>
+                        <p>Modifier mes informations</p>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Section Déconnexion -->
+        <div class="logout-section">
+            <a href="/logout/" class="btn-logout">
+                🚪 Se Déconnecter
+            </a>
+        </div>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <p>&copy; 2025 DjanPay - Application bancaire sécurisée | Tous droits réservés</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+            Développé avec Django & SQLite
+        </p>
+    </footer>
+</body>
+</html>
