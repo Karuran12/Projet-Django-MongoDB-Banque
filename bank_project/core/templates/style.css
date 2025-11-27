@@ -1,0 +1,13 @@
+.btn {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.btn-danger { background: #dc3545; }
+.btn-warning { background: #ffc107; }
+
+.legal-links { margin-top: 20px; font-size: 14px; }
