@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+
+        <div class="left">
+            <h2>Content de te revoir !</h2>
+            <p>Connecte-toi pour accéder à ton espace bancaire sécurisé.</p>
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                 <div class="input-group">
+                    <span class="icon">👤</span>
+                    <input type="text" name="username" placeholder="Name" required>
+                </div>
+
+                <div class="input-group">
+                    <span class="icon">🔒</span>
+                    <input type="password" name="password1" placeholder="Password" required>
+                </div>
+
+                {% if form.errors %}
+                    <p class="error">Identifiants incorrects. Veuillez réessayer.</p>
+                {% endif %}
+
+                <button type="submit" class="btn-primary">SE CONNECTER</button>
+
+                <p class="switch-text">
+                    Pas encore de compte ? <a href="{% url 'register' %}">Créer un compte</a>
+                </p>
+            </form>
+        </div>
+
+        <div class="right">
+            <h2>Bienvenue 👋</h2>
+            <p>Votre sécurité est notre priorité. Accédez à vos services bancaires.</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
