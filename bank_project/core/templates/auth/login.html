@@ -16,12 +16,12 @@
                 
                  <div class="input-group">
                     <span class="icon">👤</span>
-                    <input type="text" name="username" placeholder="Name" required>
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
                 </div>
 
                 <div class="input-group">
                     <span class="icon">🔒</span>
-                    <input type="password" name="password1" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
                 </div>
 
                 {% if form.errors %}
@@ -29,10 +29,6 @@
                 {% endif %}
 
                 <button type="submit" class="btn-primary">SE CONNECTER</button>
-
-                <p class="switch-text">
-                    Pas encore de compte ? <a href="{% url 'register' %}">Créer un compte</a>
-                </p>
             </form>
         </div>
 
