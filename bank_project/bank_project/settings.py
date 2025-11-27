@@ -49,6 +49,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = "Strict"
+
+
 ROOT_URLCONF = 'bank_project.urls'
 
 TEMPLATES = [

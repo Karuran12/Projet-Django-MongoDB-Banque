@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Virement - DjanPay{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+
+        <div class="left">
+            <h2>Effectuer un virement 💸</h2>
+            <p>Votre solde actuel : <strong>{{ balance }} €</strong></p>
+
+            {# Messages de succès / erreur #}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="message {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="post" autocomplete="off">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label for="id_receiver_username">Destinataire</label>
+                    {{ form.receiver_username }}
+                </div>
+
+                <div class="input-group">
+                    <label for="id_amount">Montant</label>
+                    {{ form.amount }}
+                </div>
+
+                <div class="input-group">
+                    <label for="id_description">Description (optionnel)</label>
+                    {{ form.description }}
+                </div>
+
+                {% if form.errors %}
+                    <div class="error">
+                        <p>Merci de corriger les erreurs du formulaire.</p>
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn-primary">Confirmer le virement</button>
+            </form>
+        </div>
+
+        <div class="right">
+            <h2>Transferts sécurisés</h2>
+            <p>
+                Tous les virements sont protégés par un jeton CSRF
+                et ne peuvent être effectués qu'à partir de votre compte.
+            </p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
