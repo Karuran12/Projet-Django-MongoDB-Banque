@@ -7,31 +7,43 @@
 <div class="container">
     <div class="card">
 
+        <!-- Colonne gauche : formulaire -->
         <div class="left">
             <h2>Content de te revoir !</h2>
             <p>Connecte-toi pour accéder à ton espace bancaire sécurisé.</p>
-            
-            <form method="POST">
+
+            <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-                
-                 <div class="input-group">
+
+                <!-- Champ Nom d'utilisateur -->
+                <div class="input-group">
                     <span class="icon">👤</span>
-                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <input type="text"
+                           name="username"
+                           required
+                           placeholder="Nom d'utilisateur"
+                           autocomplete="username">
                 </div>
 
+                <!-- Champ Mot de passe -->
                 <div class="input-group">
                     <span class="icon">🔒</span>
-                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <input type="password"
+                           name="password"
+                           required
+                           placeholder="Mot de passe"
+                           autocomplete="current-password">
                 </div>
 
                 {% if form.errors %}
-                    <p class="error">Identifiants incorrects. Veuillez réessayer.</p>
+                    <p class="error-message">⚠️ Identifiants incorrects. Réessaie.</p>
                 {% endif %}
 
                 <button type="submit" class="btn-primary">SE CONNECTER</button>
             </form>
         </div>
 
+        <!-- Colonne droite : bloc violet -->
         <div class="right">
             <h2>Bienvenue 👋</h2>
             <p>Votre sécurité est notre priorité. Accédez à vos services bancaires.</p>

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
+        <h2 class="logo">Djan<span>Pay</span></h2>
+        <nav>
+            <a href="#" class="active">🏠 Accueil</a>
+            <a href="#">💰 Comptes</a>
+            <a href="#">💸 Faire un virement</a>
+            <a href="#">📜 Historique</a>
+            <a href="#">👤 Profil</a>
+            <a href="#">⚙️ Paramètres</a>
+        </nav>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div></div>
+            <div class="user-info">
+                <span>👤 {{ user.username }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+            </div>
+        </header>
+
+        <!-- User Info Cards -->
+        <section class="cards">
+
+            <div class="card balance">
+                <h3>Solde total</h3>
+                <p class="amount">15,240.50 €</p>
+            </div>
+
+            <div class="card quick-action">
+                <h3>Faire un virement</h3>
+                <a href="#" class="action-btn">➤ Commencer</a>
+            </div>
+
+            <div class="card quick-action">
+                <h3>Voir mes relevés</h3>
+                <a href="#" class="action-btn">📄 Historique</a>
+            </div>
+        </section>
+
+        <!-- Recent Transactions -->
+        <section class="transactions">
+            <h2>📜 Dernières opérations</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Montant</th>
+                </tr>
+                <tr>
+                    <td>27/11/2025</td>
+                    <td>Virement SEPA</td>
+                    <td class="debit">- 240,00 €</td>
+                </tr>
+                <tr>
+                    <td>26/11/2025</td>
+                    <td>Paie</td>
+                    <td class="credit">+ 1,800.00 €</td>
+                </tr>
+                <tr>
+                    <td>25/11/2025</td>
+                    <td>Retrait</td>
+                    <td class="debit">- 50,00 €</td>
+                </tr>
+            </table>
+        </section>
+
+    </main>
+</div>
+{% endblock %}

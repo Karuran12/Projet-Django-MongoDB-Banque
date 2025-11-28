@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard-container">
+    <h1>👨‍💼 Tableau de Bord Administrateur</h1>
+    <p class="subtitle">Gérez les utilisateurs, les comptes et la sécurité du système.</p>
+
+    <div class="menu-grid">
+
+        <a href="{% url 'admin_panel' %}" class="menu-item admin">
+            <div class="icon">👥</div>
+            <h3>Gérer les Utilisateurs</h3>
+            <p>Créer, modifier, supprimer des comptes.</p>
+        </a>
+
+        <a href="#" class="menu-item admin">
+            <div class="icon">💸</div>
+            <h3>Historique des Transactions</h3>
+            <p>Suivi global des virements bancaires.</p>
+        </a>
+
+        <a href="#" class="menu-item admin">
+            <div class="icon">🔐</div>
+            <h3>Audit de Sécurité</h3>
+            <p>Analyse des logs et risques système.</p>
+        </a>
+
+        <a href="#" class="menu-item admin">
+            <div class="icon">⚙️</div>
+            <h3>Paramètres Système</h3>
+            <p>Configuration et maintenance.</p>
+        </a>
+    </div>
+    <div class="admin-header">
+    <span>👤 Administrateur : {{ user.username }}</span>
+    <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+</div>
+</div>
+{% endblock %}
