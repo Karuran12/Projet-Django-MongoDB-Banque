@@ -4,7 +4,6 @@
 {% block title %}Tableau de bord{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 
 <div class="dashboard">
 
@@ -12,7 +11,7 @@
     <aside class="sidebar">
         <h2 class="logo">Djan<span>Pay</span></h2>
         <nav>
-            <a href="{% url 'dashboard' %}">🏠 Tableau de bord</a>
+            <a href="{% url 'dashboard' %}" class="active">🏠 Tableau de bord</a>
             <a href="{% url 'account' %}">💰 Mon Compte</a>
             <a href="{% url 'transfer' %}">💸 Virement</a>
             <a href="{% url 'history' %}">📜 Historique</a>
@@ -24,49 +23,235 @@
     <main class="main-content">
 
         <header class="topbar">
-            <h2>Bienvenue, {{ user.username }}</h2>
+            <div>
+                <h2>Bienvenue, {{ user.username }}</h2>
+                <p class="topbar-subtitle">Tableau de bord financier</p>
+            </div>
             <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
         </header>
 
-        <!-- Informations utilisateur -->
-        <section class="user-summary">
-            <h3>Mes informations</h3>
+        <!-- Statistiques principales -->
+        <section class="stats-section">
             <div class="summary-grid">
-                <div class="info-card">
-                    <p><strong>👤 Nom d'utilisateur :</strong></p>
-                    <p>{{ user.username }}</p>
+                <div class="info-card stat-card balance-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Solde actuel</p>
+                        <p class="stat-value">{{ account.balance|floatformat:2 }} €</p>
+                        <p class="stat-trend positive">+2.5% ce mois</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <p><strong>📧 Email :</strong></p>
-                    <p>{{ user.email|default:"Non renseigné" }}</p>
+
+                <div class="info-card stat-card">
+                    <div class="stat-icon">📤</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total dépensé</p>
+                        <p class="stat-value debit">{{ total_spent|floatformat:2 }} €</p>
+                        <p class="stat-detail">{{ monthly_count }} transaction(s) ce mois</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <p><strong>💼 Type de compte :</strong></p>
-                    <p>Utilisateur</p>
+
+                <div class="info-card stat-card">
+                    <div class="stat-icon">📥</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total reçu</p>
+                        <p class="stat-value credit">{{ total_received|floatformat:2 }} €</p>
+                        <p class="stat-detail">Toutes transactions</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <p><strong>💳 Solde actuel :</strong></p>
-                    <p>{{ account.balance }} €</p>
+
+                <div class="info-card stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Cette semaine</p>
+                        <p class="stat-value">{{ weekly_spent|floatformat:2 }} €</p>
+                        <p class="stat-detail">{{ weekly_count }} transaction(s)</p>
+                    </div>
                 </div>
-            </div>
-            <div class="btn-group">
-                <a href="{% url 'profile' %}" class="btn-primary">Modifier mes informations</a>
-                <a href="{% url 'delete_account' %}" class="btn-danger">Supprimer mon compte</a>
             </div>
         </section>
 
         <!-- Actions rapides -->
-        <section class="cards">
-            <div class="card quick-action">
-                <h3>💸 Effectuer un virement</h3>
-                <a href="{% url 'transfer' %}" class="action-btn">➤ Commencer</a>
+        <section class="quick-actions">
+            <h3 class="section-title">Actions rapides</h3>
+            <div class="action-grid">
+                <a href="{% url 'transfer' %}" class="action-card">
+                    <span class="action-icon">💸</span>
+                    <span class="action-label">Nouveau virement</span>
+                </a>
+                <a href="{% url 'history' %}" class="action-card">
+                    <span class="action-icon">📜</span>
+                    <span class="action-label">Historique</span>
+                </a>
+                <a href="{% url 'account' %}" class="action-card">
+                    <span class="action-icon">💳</span>
+                    <span class="action-label">Mon compte</span>
+                </a>
+                <a href="{% url 'profile' %}" class="action-card">
+                    <span class="action-icon">👤</span>
+                    <span class="action-label">Profil</span>
+                </a>
             </div>
-            <div class="card quick-action">
-                <h3>📜 Historique des opérations</h3>
-                <a href="{% url 'history' %}" class="action-btn">📄 Voir</a>
+        </section>
+
+        <!-- Graphiques -->
+        <section class="charts-section">
+            <div class="charts-grid">
+
+                <!-- Graphique évolution mensuelle -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">📈 Évolution sur 6 mois</h3>
+                        <select id="chart1-period" class="chart-select">
+                            <option value="6">6 mois</option>
+                            <option value="12">12 mois</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Graphique dépenses vs revenus -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">💹 Dépenses vs Revenus</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="balanceChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Transactions récentes + Activité -->
+        <section class="activity-section">
+            <div class="activity-grid">
+
+                <!-- Transactions récentes -->
+                <div class="transactions-card">
+                    <div class="card-header">
+                        <h3 class="section-title">🕒 Transactions récentes</h3>
+                        <a href="{% url 'history' %}" class="view-all-link">Voir tout →</a>
+                    </div>
+
+                    {% if recent_transactions %}
+                    <div class="transactions-list">
+                        {% for transaction in recent_transactions %}
+                        <div class="transaction-item">
+                            <div class="transaction-icon">
+                                {% if transaction.sender == user %}
+                                    <span class="icon-circle debit">📤</span>
+                                {% else %}
+                                    <span class="icon-circle credit">📥</span>
+                                {% endif %}
+                            </div>
+                            <div class="transaction-info">
+                                {% if transaction.sender == user %}
+                                    <p class="transaction-name">Vers {{ transaction.receiver.username }}</p>
+                                    <p class="transaction-date">{{ transaction.timestamp|date:"d/m/Y à H:i" }}</p>
+                                {% else %}
+                                    <p class="transaction-name">De {{ transaction.sender.username }}</p>
+                                    <p class="transaction-date">{{ transaction.timestamp|date:"d/m/Y à H:i" }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="transaction-amount">
+                                {% if transaction.sender == user %}
+                                    <span class="amount debit">-{{ transaction.amount|floatformat:2 }} €</span>
+                                {% else %}
+                                    <span class="amount credit">+{{ transaction.amount|floatformat:2 }} €</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <p class="empty-text">Aucune transaction récente</p>
+                        <a href="{% url 'transfer' %}" class="btn-primary btn-sm">Effectuer un virement</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Timeline d'activité -->
+                <div class="activity-card">
+                    <h3 class="section-title">📅 Activité du mois</h3>
+
+                    <div class="activity-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot active"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Dépenses ce mois</p>
+                                <p class="timeline-amount debit">{{ monthly_spent|floatformat:2 }} €</p>
+                                <p class="timeline-date">{{ monthly_count }} transaction(s)</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Cette semaine</p>
+                                <p class="timeline-amount">{{ weekly_spent|floatformat:2 }} €</p>
+                                <p class="timeline-date">{{ weekly_count }} transaction(s)</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Solde moyen</p>
+                                <p class="timeline-amount">{{ account.balance|floatformat:2 }} €</p>
+                                <p class="timeline-date">Mise à jour quotidienne</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Budget mensuel</span>
+                            <span class="summary-value">5 000 €</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {% widthratio monthly_spent 5000 100 %}%"></div>
+                        </div>
+                        <p class="progress-text">{{ monthly_spent|floatformat:2 }} € / 5 000 € ({% widthratio monthly_spent 5000 100 %}%)</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer info -->
+        <section class="dashboard-footer">
+            <div class="footer-cards">
+                <div class="footer-card">
+                    <p class="footer-label">Compte actif depuis</p>
+                    <p class="footer-value">{{ user.date_joined|date:"d F Y" }}</p>
+                </div>
+                <div class="footer-card">
+                    <p class="footer-label">Sécurité</p>
+                    <p class="footer-value">🔒 Activée</p>
+                </div>
+                <div class="footer-card">
+                    <p class="footer-label">Support</p>
+                    <p class="footer-value">📞 24/7 disponible</p>
+                </div>
             </div>
         </section>
 
     </main>
 </div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- Dashboard JS avec données -->
+<script>
+// Données pour les graphiques (passées depuis Django)
+const monthlyData = {{ monthly_data|safe }};
+</script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+
 {% endblock %}

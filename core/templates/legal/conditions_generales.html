@@ -1,5 +1,775 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Conditions Générales d'Utilisation - Bank Demo{% endblock %}
+
 {% block content %}
-<h1>Conditions Générales d'Utilisation</h1>
-<p>Règles d'utilisation du site, droits et responsabilités des utilisateurs.</p>
+<article class="legal-container">
+    <header class="legal-header">
+        <h1>Conditions Générales d'Utilisation</h1>
+        <p class="legal-subtitle">Plateforme Bancaire en Ligne - Bank Demo</p>
+        <p class="legal-update">
+            <strong>Dernière mise à jour :</strong> 1er décembre 2024<br>
+            <strong>Version :</strong> 1.0
+        </p>
+    </header>
+
+    <!-- Sommaire cliquable -->
+    <nav class="legal-toc" aria-label="Sommaire des CGU">
+        <h2>Sommaire</h2>
+        <ol>
+            <li><a href="#article-1">Objet et acceptation</a></li>
+            <li><a href="#article-2">Définitions</a></li>
+            <li><a href="#article-3">Accès et inscription</a></li>
+            <li><a href="#article-4">Services proposés</a></li>
+            <li><a href="#article-5">Obligations de l'utilisateur</a></li>
+            <li><a href="#article-6">Sécurité et confidentialité</a></li>
+            <li><a href="#article-7">Responsabilités</a></li>
+            <li><a href="#article-8">Propriété intellectuelle</a></li>
+            <li><a href="#article-9">Durée et résiliation</a></li>
+            <li><a href="#article-10">Modification des CGU</a></li>
+            <li><a href="#article-11">Données personnelles</a></li>
+            <li><a href="#article-12">Loi applicable et juridiction</a></li>
+            <li><a href="#article-13">Contact</a></li>
+        </ol>
+    </nav>
+
+    <div class="legal-content">
+        <!-- Article 1 -->
+        <section id="article-1" class="legal-section">
+            <h2>1. Objet et acceptation</h2>
+            
+            <h3>1.1. Objet</h3>
+            <p>
+                Les présentes Conditions Générales d'Utilisation (ci-après "CGU") régissent l'utilisation 
+                de la plateforme bancaire en ligne accessible à l'adresse <strong>[VOTRE_URL]</strong> 
+                (ci-après "la Plateforme"), éditée par <strong>[VOTRE_ENTREPRISE]</strong> (ci-après "l'Éditeur").
+            </p>
+            <p>
+                La Plateforme permet aux utilisateurs de gérer un compte bancaire virtuel, 
+                d'effectuer des virements entre utilisateurs, de consulter leur solde et 
+                l'historique de leurs transactions.
+            </p>
+
+            <h3>1.2. Acceptation</h3>
+            <p>
+                L'accès et l'utilisation de la Plateforme impliquent l'acceptation pleine et entière 
+                des présentes CGU. En créant un compte, l'utilisateur reconnaît avoir lu, compris et 
+                accepté sans réserve ces conditions.
+            </p>
+            <p>
+                Si l'utilisateur n'accepte pas les présentes CGU, il est invité à ne pas utiliser 
+                la Plateforme.
+            </p>
+
+            <h3>1.3. Preuve électronique</h3>
+            <p>
+                Conformément à l'article 1366 du Code civil, les registres informatisés conservés 
+                dans les systèmes informatiques de l'Éditeur seront considérés comme preuves des 
+                communications, commandes et paiements intervenus entre les parties.
+            </p>
+        </section>
+
+        <!-- Article 2 -->
+        <section id="article-2" class="legal-section">
+            <h2>2. Définitions</h2>
+            <p>Les termes suivants auront la signification indiquée ci-dessous :</p>
+            <dl class="legal-definitions">
+                <dt><strong>Compte :</strong></dt>
+                <dd>Espace personnel créé par l'Utilisateur lui permettant d'accéder aux Services.</dd>
+
+                <dt><strong>Identifiants :</strong></dt>
+                <dd>Nom d'utilisateur et mot de passe permettant à l'Utilisateur de s'authentifier.</dd>
+
+                <dt><strong>Services :</strong></dt>
+                <dd>Ensemble des fonctionnalités proposées par la Plateforme (consultation de solde, virements, historique).</dd>
+
+                <dt><strong>Transaction :</strong></dt>
+                <dd>Opération bancaire effectuée entre deux Comptes (virement, dépôt, retrait).</dd>
+
+                <dt><strong>Utilisateur :</strong></dt>
+                <dd>Toute personne physique majeure ayant créé un Compte sur la Plateforme.</dd>
+            </dl>
+        </section>
+
+        <!-- Article 3 -->
+        <section id="article-3" class="legal-section">
+            <h2>3. Accès et inscription</h2>
+
+            <h3>3.1. Conditions d'accès</h3>
+            <p>La Plateforme est accessible :</p>
+            <ul>
+                <li>Aux personnes physiques majeures (18 ans et plus) disposant de la pleine capacité juridique ;</li>
+                <li>Aux personnes résidant en France métropolitaine ou dans l'Union Européenne ;</li>
+                <li>Via un navigateur web moderne supportant HTTPS et les cookies.</li>
+            </ul>
+            <p class="legal-warning">
+                ⚠️ L'utilisation de la Plateforme par des mineurs est strictement interdite.
+            </p>
+
+            <h3>3.2. Création du compte</h3>
+            <p>Pour accéder aux Services, l'Utilisateur doit créer un Compte en fournissant :</p>
+            <ul>
+                <li>Un nom d'utilisateur unique ;</li>
+                <li>Une adresse email valide ;</li>
+                <li>Un mot de passe sécurisé (minimum 8 caractères, incluant majuscules, minuscules, chiffres) ;</li>
+                <li>Son prénom et nom.</li>
+            </ul>
+            <p>
+                L'Utilisateur garantit l'exactitude, la sincérité et la mise à jour des informations communiquées. 
+                Toute fausse déclaration pourra entraîner la suspension ou la suppression du Compte.
+            </p>
+
+            <h3>3.3. Validation du compte</h3>
+            <p>
+                Après inscription, un email de confirmation est envoyé à l'adresse indiquée. 
+                Le Compte est activé dès la validation de cet email.
+            </p>
+
+            <h3>3.4. Unicité du compte</h3>
+            <p>
+                Chaque Utilisateur ne peut créer qu'un seul Compte. La création de comptes multiples 
+                par une même personne est interdite et pourra entraîner la suspension définitive de tous les comptes.
+            </p>
+        </section>
+
+        <!-- Article 4 -->
+        <section id="article-4" class="legal-section">
+            <h2>4. Services proposés</h2>
+
+            <h3>4.1. Fonctionnalités</h3>
+            <p>La Plateforme offre les Services suivants :</p>
+            <ol>
+                <li><strong>Gestion de compte :</strong> Consultation du solde, du numéro de compte (IBAN virtuel), modification des informations personnelles ;</li>
+                <li><strong>Virements :</strong> Transfert d'argent vers un autre Utilisateur de la Plateforme ;</li>
+                <li><strong>Historique des transactions :</strong> Visualisation détaillée des opérations (date, montant, destinataire) ;</li>
+                <li><strong>Statistiques :</strong> Graphiques et analyses des dépenses/revenus.</li>
+            </ol>
+
+            <h3>4.2. Conditions des virements</h3>
+            <ul>
+                <li>Les virements sont instantanés et irrévocables ;</li>
+                <li>Le montant minimum est de 0,01 € ;</li>
+                <li>Le montant maximum par virement est de 10 000,00 € ;</li>
+                <li>Le solde du Compte ne peut être négatif (découvert interdit) ;</li>
+                <li>Un virement vers son propre Compte est impossible.</li>
+            </ul>
+
+            <h3>4.3. Disponibilité du service</h3>
+            <p>
+                L'Éditeur s'efforce de maintenir la Plateforme accessible 24h/24 et 7j/7, 
+                sous réserve des opérations de maintenance programmées ou urgentes. 
+                Des interruptions temporaires peuvent survenir sans préavis.
+            </p>
+            <p>
+                <strong>Taux de disponibilité visé :</strong> 99,5% (hors maintenance planifiée).
+            </p>
+
+            <h3>4.4. Gratuité</h3>
+            <p>
+                L'utilisation de la Plateforme est actuellement <strong>gratuite</strong>. 
+                Aucun frais de gestion, de virement ou de clôture de compte n'est appliqué.
+            </p>
+            <p class="legal-info">
+                ℹ️ L'Éditeur se réserve le droit d'introduire une tarification à l'avenir, 
+                moyennant un préavis de 3 mois notifié par email.
+            </p>
+        </section>
+
+        <!-- Article 5 -->
+        <section id="article-5" class="legal-section">
+            <h2>5. Obligations de l'utilisateur</h2>
+
+            <h3>5.1. Usage conforme</h3>
+            <p>L'Utilisateur s'engage à utiliser la Plateforme de manière licite et conforme aux présentes CGU. Il est notamment interdit de :</p>
+            <ul>
+                <li>Utiliser la Plateforme à des fins frauduleuses, illégales ou contraires à l'ordre public ;</li>
+                <li>Effectuer des opérations de blanchiment d'argent ou de financement du terrorisme ;</li>
+                <li>Usurper l'identité d'un tiers ou créer un faux compte ;</li>
+                <li>Tenter de contourner les mesures de sécurité ou d'accéder à des comptes tiers ;</li>
+                <li>Diffuser des virus, malwares ou tout code malveillant ;</li>
+                <li>Collecter des données personnelles d'autres Utilisateurs sans autorisation.</li>
+            </ul>
+
+            <h3>5.2. Sécurité des identifiants</h3>
+            <p>L'Utilisateur est responsable de la confidentialité de ses Identifiants. Il doit :</p>
+            <ul>
+                <li>Choisir un mot de passe robuste et le modifier régulièrement ;</li>
+                <li>Ne jamais communiquer ses Identifiants à un tiers ;</li>
+                <li>Se déconnecter après chaque session, surtout sur un ordinateur partagé ;</li>
+                <li>Signaler immédiatement toute utilisation frauduleuse de son Compte à <a href="mailto:security@votredomaine.fr">security@votredomaine.fr</a>.</li>
+            </ul>
+            <p class="legal-warning">
+                ⚠️ Toute connexion effectuée avec les Identifiants de l'Utilisateur est présumée 
+                émaner de celui-ci. L'Éditeur ne saurait être tenu responsable d'une utilisation 
+                frauduleuse résultant d'une négligence de l'Utilisateur.
+            </p>
+
+            <h3>5.3. Exactitude des informations</h3>
+            <p>
+                L'Utilisateur garantit que les informations fournies lors de l'inscription et 
+                lors de chaque Transaction sont exactes, à jour et complètes. Il s'engage à 
+                mettre à jour ses données sans délai en cas de modification.
+            </p>
+
+            <h3>5.4. Comportement respectueux</h3>
+            <p>
+                L'Utilisateur s'engage à adopter un comportement respectueux envers les autres 
+                Utilisateurs et l'équipe de support. Tout abus, harcèlement ou comportement 
+                injurieux pourra entraîner la suspension du Compte.
+            </p>
+        </section>
+
+        <!-- Article 6 -->
+        <section id="article-6" class="legal-section">
+            <h2>6. Sécurité et confidentialité</h2>
+
+            <h3>6.1. Mesures de sécurité</h3>
+            <p>L'Éditeur met en œuvre les mesures techniques et organisationnelles suivantes :</p>
+            <ul>
+                <li><strong>Chiffrement :</strong> Communication sécurisée via HTTPS (TLS 1.3) ;</li>
+                <li><strong>Hashage des mots de passe :</strong> Algorithme PBKDF2 avec SHA256 ;</li>
+                <li><strong>Protection CSRF :</strong> Tokens anti-falsification de requêtes ;</li>
+                <li><strong>Sauvegardes :</strong> Copies quotidiennes des données avec rétention de 30 jours ;</li>
+                <li><strong>Journalisation :</strong> Logs des connexions et transactions conservés 1 an.</li>
+            </ul>
+
+            <h3>6.2. Authentification forte</h3>
+            <p>
+                L'accès au Compte requiert une authentification par nom d'utilisateur et mot de passe. 
+                L'Éditeur se réserve le droit d'implémenter une authentification à deux facteurs (2FA) 
+                pour renforcer la sécurité.
+            </p>
+
+            <h3>6.3. Signalement des failles</h3>
+            <p>
+                Tout Utilisateur découvrant une faille de sécurité est invité à la signaler 
+                immédiatement à <a href="mailto:security@votredomaine.fr">security@votredomaine.fr</a>. 
+                Un programme de bug bounty pourra être mis en place.
+            </p>
+        </section>
+
+        <!-- Article 7 -->
+        <section id="article-7" class="legal-section">
+            <h2>7. Responsabilités</h2>
+
+            <h3>7.1. Responsabilité de l'Éditeur</h3>
+            <p>L'Éditeur s'engage à :</p>
+            <ul>
+                <li>Fournir les Services avec diligence et conformément aux standards professionnels ;</li>
+                <li>Assurer la sécurité des données selon l'état de l'art ;</li>
+                <li>Notifier tout incident de sécurité affectant les données personnelles dans les 72 heures (conformément au RGPD).</li>
+            </ul>
+            
+            <p><strong>Limitations de responsabilité :</strong></p>
+            <p>L'Éditeur ne pourra être tenu responsable :</p>
+            <ul>
+                <li>En cas de force majeure (catastrophe naturelle, cyberattaque massive, panne des services tiers) ;</li>
+                <li>Des interruptions de service liées à la maintenance ou aux mises à jour ;</li>
+                <li>Des dommages indirects (perte de profit, préjudice commercial) ;</li>
+                <li>De l'utilisation frauduleuse du Compte par un tiers suite à une négligence de l'Utilisateur ;</li>
+                <li>Du contenu ou des actions d'autres Utilisateurs.</li>
+            </ul>
+
+            <h3>7.2. Responsabilité de l'utilisateur</h3>
+            <p>L'Utilisateur est seul responsable :</p>
+            <ul>
+                <li>De l'usage qu'il fait de son Compte et des Transactions effectuées ;</li>
+                <li>De la confidentialité de ses Identifiants ;</li>
+                <li>Des conséquences de toute violation des présentes CGU.</li>
+            </ul>
+            <p>
+                En cas de manquement, l'Utilisateur s'engage à indemniser l'Éditeur de tout 
+                préjudice subi (réclamations de tiers, amendes réglementaires, frais de justice).
+            </p>
+
+            <h3>7.3. Limitation de garantie</h3>
+            <p>
+                La Plateforme est fournie "en l'état". L'Éditeur ne garantit pas que les Services 
+                seront exempts d'erreurs, de bugs ou d'interruptions. Aucune garantie de performance 
+                ou d'adéquation à un usage particulier n'est donnée.
+            </p>
+        </section>
+
+        <!-- Article 8 -->
+        <section id="article-8" class="legal-section">
+            <h2>8. Propriété intellectuelle</h2>
+
+            <h3>8.1. Droits de l'Éditeur</h3>
+            <p>
+                Tous les éléments de la Plateforme (design, logo, code source, base de données, 
+                textes, images) sont protégés par les droits d'auteur, marques et brevets. 
+                Ils sont la propriété exclusive de l'Éditeur ou de ses partenaires.
+            </p>
+            <p>
+                Toute reproduction, représentation, modification, publication ou adaptation, 
+                totale ou partielle, est strictement interdite sans autorisation écrite préalable.
+            </p>
+
+            <h3>8.2. Licence d'utilisation</h3>
+            <p>
+                L'Éditeur accorde à l'Utilisateur une licence personnelle, non exclusive, 
+                non transférable et révocable d'utilisation de la Plateforme, limitée à 
+                un usage conforme aux présentes CGU.
+            </p>
+
+            <h3>8.3. Contenu de l'utilisateur</h3>
+            <p>
+                Les données saisies par l'Utilisateur (nom, email, historique de transactions) 
+                restent sa propriété. En utilisant la Plateforme, l'Utilisateur accorde à 
+                l'Éditeur une licence d'utilisation de ces données strictement nécessaire 
+                à la fourniture des Services.
+            </p>
+        </section>
+
+        <!-- Article 9 -->
+        <section id="article-9" class="legal-section">
+            <h2>9. Durée et résiliation</h2>
+
+            <h3>9.1. Durée</h3>
+            <p>
+                Les présentes CGU sont conclues pour une durée indéterminée à compter de 
+                l'acceptation par l'Utilisateur lors de la création de son Compte.
+            </p>
+
+            <h3>9.2. Résiliation par l'utilisateur</h3>
+            <p>
+                L'Utilisateur peut clôturer son Compte à tout moment via l'interface de gestion 
+                de profil ou en contactant <a href="mailto:support@votredomaine.fr">support@votredomaine.fr</a>.
+            </p>
+            <p><strong>Conséquences de la clôture :</strong></p>
+            <ul>
+                <li>Le solde du Compte doit être nul (aucun remboursement n'est possible) ;</li>
+                <li>L'accès aux Services est immédiatement révoqué ;</li>
+                <li>Les données personnelles sont supprimées dans un délai de 30 jours, sauf obligation légale de conservation (historique transactionnel conservé 5 ans).</li>
+            </ul>
+
+            <h3>9.3. Résiliation par l'Éditeur</h3>
+            <p>L'Éditeur peut suspendre ou supprimer un Compte sans préavis en cas de :</p>
+            <ul>
+                <li>Violation des présentes CGU ;</li>
+                <li>Utilisation frauduleuse ou illégale de la Plateforme ;</li>
+                <li>Inactivité du Compte pendant plus de 2 ans ;</li>
+                <li>Demande d'une autorité judiciaire ou administrative.</li>
+            </ul>
+            <p>
+                En cas de suspension, l'Utilisateur sera notifié par email et disposera d'un 
+                délai de 15 jours pour contester la décision.
+            </p>
+
+            <h3>9.4. Fermeture de la plateforme</h3>
+            <p>
+                En cas de cessation définitive d'activité, l'Éditeur s'engage à notifier 
+                les Utilisateurs 3 mois à l'avance par email et à proposer une procédure 
+                d'exportation des données.
+            </p>
+        </section>
+
+        <!-- Article 10 -->
+        <section id="article-10" class="legal-section">
+            <h2>10. Modification des CGU</h2>
+
+            <h3>10.1. Droit de modification</h3>
+            <p>
+                L'Éditeur se réserve le droit de modifier les présentes CGU à tout moment 
+                pour s'adapter aux évolutions légales, techniques ou commerciales.
+            </p>
+
+            <h3>10.2. Notification</h3>
+            <p>
+                Toute modification substantielle sera notifiée aux Utilisateurs par :
+            </p>
+            <ul>
+                <li>Email à l'adresse enregistrée ;</li>
+                <li>Bannière d'information sur la Plateforme.</li>
+            </ul>
+            <p>
+                Les nouvelles CGU entreront en vigueur 30 jours après notification, sauf 
+                modifications imposées par la loi (application immédiate).
+            </p>
+
+            <h3>10.3. Acceptation des modifications</h3>
+            <p>
+                La poursuite de l'utilisation de la Plateforme après l'entrée en vigueur 
+                des nouvelles CGU vaut acceptation tacite. En cas de désaccord, l'Utilisateur 
+                doit clôturer son Compte avant cette date.
+            </p>
+        </section>
+
+        <!-- Article 11 -->
+        <section id="article-11" class="legal-section">
+            <h2>11. Données personnelles</h2>
+            <p>
+                Le traitement des données personnelles collectées via la Plateforme est 
+                régi par notre <a href="{% url 'politique_confidentialite' %}" class="legal-link">Politique de Confidentialité</a>, 
+                conforme au Règlement Général sur la Protection des Données (RGPD).
+            </p>
+            <p><strong>Informations clés :</strong></p>
+            <ul>
+                <li><strong>Responsable du traitement :</strong> [VOTRE_ENTREPRISE], [ADRESSE]</li>
+                <li><strong>Finalités :</strong> Gestion des comptes, exécution des virements, sécurité, statistiques</li>
+                <li><strong>Base légale :</strong> Exécution du contrat (art. 6.1.b RGPD), obligation légale (art. 6.1.c)</li>
+                <li><strong>Durée de conservation :</strong> Données actives jusqu'à clôture du compte + 5 ans pour l'historique transactionnel</li>
+                <li><strong>Droits :</strong> Accès, rectification, suppression, portabilité, opposition (contact : <a href="mailto:dpo@votredomaine.fr">dpo@votredomaine.fr</a>)</li>
+            </ul>
+            <p>
+                Pour plus de détails, consultez la <a href="{% url 'politique_confidentialite' %}" class="legal-link">Politique de Confidentialité complète</a>.
+            </p>
+        </section>
+
+        <!-- Article 12 -->
+        <section id="article-12" class="legal-section">
+            <h2>12. Loi applicable et juridiction</h2>
+
+            <h3>12.1. Loi applicable</h3>
+            <p>
+                Les présentes CGU sont régies par le <strong>droit français</strong>, 
+                conformément au Code civil, au Code monétaire et financier, et au RGPD 
+                (Règlement UE 2016/679).
+            </p>
+
+            <h3>12.2. Résolution amiable</h3>
+            <p>
+                En cas de litige, l'Utilisateur et l'Éditeur s'engagent à rechercher une 
+                solution amiable avant toute action judiciaire. Les réclamations doivent 
+                être adressées à <a href="mailto:reclamations@votredomaine.fr">reclamations@votredomaine.fr</a>.
+            </p>
+            <p>
+                L'Éditeur s'engage à répondre sous 15 jours ouvrés.
+            </p>
+
+            <h3>12.3. Médiation</h3>
+            <p>
+                Conformément à l'article L.612-1 du Code de la consommation, l'Utilisateur 
+                peut recourir gratuitement à un médiateur de la consommation :
+            </p>
+            <div class="legal-box">
+                <strong>Médiateur de la consommation :</strong><br>
+                [NOM DU MÉDIATEUR]<br>
+                [ADRESSE]<br>
+                Email : [EMAIL]<br>
+                Site web : [URL]
+            </div>
+
+            <h3>12.4. Juridiction compétente</h3>
+            <p>
+                À défaut de résolution amiable, les litiges seront portés devant les 
+                tribunaux compétents de <strong>[VILLE DU SIÈGE SOCIAL]</strong>, 
+                France, sauf disposition légale contraire (ex: action d'un consommateur 
+                devant le tribunal de son domicile).
+            </p>
+        </section>
+
+        <!-- Article 13 -->
+        <section id="article-13" class="legal-section">
+            <h2>13. Contact</h2>
+            <p>Pour toute question relative aux présentes CGU ou à l'utilisation de la Plateforme :</p>
+            
+            <div class="legal-contact-grid">
+                <div class="legal-contact-card">
+                    <h4>📧 Support technique</h4>
+                    <p>
+                        <a href="mailto:support@votredomaine.fr">support@votredomaine.fr</a><br>
+                        Délai de réponse : 48h ouvrées
+                    </p>
+                </div>
+
+                <div class="legal-contact-card">
+                    <h4>🔒 Sécurité</h4>
+                    <p>
+                        <a href="mailto:security@votredomaine.fr">security@votredomaine.fr</a><br>
+                        Réponse prioritaire sous 24h
+                    </p>
+                </div>
+
+                <div class="legal-contact-card">
+                    <h4>⚖️ Réclamations</h4>
+                    <p>
+                        <a href="mailto:reclamations@votredomaine.fr">reclamations@votredomaine.fr</a><br>
+                        Traitement sous 15 jours
+                    </p>
+                </div>
+
+                <div class="legal-contact-card">
+                    <h4>🛡️ Protection des données</h4>
+                    <p>
+                        <a href="mailto:dpo@votredomaine.fr">dpo@votredomaine.fr</a><br>
+                        DPO : [NOM DU DPO]
+                    </p>
+                </div>
+            </div>
+
+            <div class="legal-box" style="margin-top: 2rem;">
+                <strong>Adresse postale :</strong><br>
+                [VOTRE_ENTREPRISE]<br>
+                [ADRESSE COMPLÈTE]<br>
+                [CODE POSTAL] [VILLE]<br>
+                [PAYS]
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer du document -->
+    <footer class="legal-footer">
+        <p>
+            <strong>Document contractuel.</strong> Version 1.0 du 1er décembre 2024.<br>
+            Consultable à tout moment sur <a href="{% url 'cgu' %}">{{ request.build_absolute_uri }}</a>
+        </p>
+        <p class="legal-archive">
+            📥 <a href="{% url 'cgu_pdf' %}" download>Télécharger en PDF</a> (version archivable)
+        </p>
+    </footer>
+</article>
+
+<style>
+/* Styles spécifiques aux documents légaux */
+.legal-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    line-height: 1.7;
+    color: #333;
+}
+
+.legal-header {
+    text-align: center;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.legal-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.legal-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.legal-update {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #95a5a6;
+}
+
+/* Sommaire */
+.legal-toc {
+    background: #ecf0f1;
+    border-left: 4px solid #3498db;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+}
+
+.legal-toc h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.legal-toc ol {
+    margin: 1rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.legal-toc li {
+    margin: 0.5rem 0;
+}
+
+.legal-toc a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.legal-toc a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Sections */
+.legal-section {
+    margin: 3rem 0;
+    scroll-margin-top: 2rem; /* Pour l'ancrage avec sommaire */
+}
+
+.legal-section h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.legal-section h3 {
+    color: #34495e;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.legal-section h4 {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+/* Listes */
+.legal-section ul,
+.legal-section ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.legal-section li {
+    margin: 0.5rem 0;
+}
+
+/* Définitions */
+.legal-definitions {
+    background: #f8f9fa;
+    border-left: 4px solid #95a5a6;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.legal-definitions dt {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 1rem;
+}
+
+.legal-definitions dt:first-child {
+    margin-top: 0;
+}
+
+.legal-definitions dd {
+    margin: 0.5rem 0 0 1.5rem;
+    color: #555;
+}
+
+/* Encadrés spéciaux */
+.legal-warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.legal-info {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.legal-box {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+}
+
+/* Grille de contacts */
+.legal-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.legal-contact-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.legal-contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.legal-contact-card h4 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.legal-contact-card p {
+    margin: 0.5rem 0 0 0;
+    color: #555;
+}
+
+/* Liens */
+.legal-link {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px dashed #3498db;
+    transition: border-bottom 0.2s;
+}
+
+.legal-link:hover {
+    border-bottom: 1px solid #2980b9;
+}
+
+/* Footer */
+.legal-footer {
+    border-top: 2px solid #ecf0f1;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+.legal-archive {
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-container {
+        padding: 1rem;
+    }
+
+    .legal-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .legal-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .legal-contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Impression */
+@media print {
+    .legal-toc {
+        page-break-after: always;
+    }
+
+    .legal-section {
+        page-break-inside: avoid;
+    }
+
+    .legal-warning,
+    .legal-info,
+    .legal-box {
+        border: 1px solid #000;
+    }
+}
+</style>
 {% endblock %}
