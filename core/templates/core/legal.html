@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Mentions Légales - DjanPay{% endblock %}
+
+{% block content %}
+<div style="min-height: 100vh; background: var(--ivory); padding: 120px 20px 60px;">
+    <div class="container container-narrow">
+        <div class="card">
+            <h1 style="font-size: 32px; margin-bottom: 24px; text-align: center;">
+                📜 Mentions Légales
+            </h1>
+
+            <div style="color: var(--grey); line-height: 1.8;">
+                <!-- Identification -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Identification de l'Éditeur
+                    </h2>
+                    <p><strong>Nom du site :</strong> DjanPay - Banque Privée Premium</p>
+                    <p><strong>Éditeur :</strong> Projet Étudiant - Formation Sécurité Web</p>
+                    <p><strong>Responsable de publication :</strong> Équipe DjanPay</p>
+                    <p><strong>Contact :</strong> contact@djanpay.fr</p>
+                </section>
+
+                <!-- Hébergement -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Hébergement
+                    </h2>
+                    <p><strong>Hébergeur :</strong> À définir (Railway, Render, Heroku, etc.)</p>
+                    <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
+                </section>
+
+                <!-- Propriété intellectuelle -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Propriété Intellectuelle
+                    </h2>
+                    <p>
+                        L'ensemble des contenus présents sur le site DjanPay (textes, images, graphismes, logo, icônes, etc.)
+                        est la propriété exclusive de l'éditeur, sauf mention contraire.
+                    </p>
+                    <p>
+                        Toute reproduction, distribution, modification, adaptation, retransmission ou publication,
+                        même partielle, de ces différents éléments est strictement interdite sans l'accord exprès par écrit de l'éditeur.
+                    </p>
+                </section>
+
+                <!-- Protection des données -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Protection des Données Personnelles
+                    </h2>
+                    <p>
+                        Conformément au Règlement Général sur la Protection des Données (RGPD),
+                        vous disposez des droits suivants :
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 12px;">
+                        <li><strong>Droit d'accès :</strong> Vous pouvez accéder à vos données personnelles</li>
+                        <li><strong>Droit de rectification :</strong> Vous pouvez corriger vos données</li>
+                        <li><strong>Droit à l'effacement :</strong> Vous pouvez demander la suppression de vos données</li>
+                        <li><strong>Droit à la portabilité :</strong> Vous pouvez récupérer vos données</li>
+                        <li><strong>Droit d'opposition :</strong> Vous pouvez vous opposer au traitement</li>
+                    </ul>
+                    <p style="margin-top: 16px;">
+                        Pour exercer ces droits, contactez-nous à :
+                        <a href="mailto:privacy@djanpay.fr" style="color: var(--secondary-gold);">privacy@djanpay.fr</a>
+                    </p>
+                </section>
+
+                <!-- Responsabilité -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Limitation de Responsabilité
+                    </h2>
+                    <p>
+                        L'éditeur s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations diffusées sur ce site.
+                    </p>
+                    <p>
+                        Toutefois, l'éditeur ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour,
+                        qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.
+                    </p>
+                </section>
+
+                <!-- Cookies -->
+                <section style="margin-bottom: 32px;">
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Cookies
+                    </h2>
+                    <p>
+                        Le site DjanPay utilise des cookies techniques nécessaires au bon fonctionnement du site :
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 12px;">
+                        <li><strong>Cookie de session :</strong> Permet de maintenir votre connexion</li>
+                        <li><strong>Cookie CSRF :</strong> Protège contre les attaques de type Cross-Site Request Forgery</li>
+                    </ul>
+                    <p style="margin-top: 16px;">
+                        Ces cookies sont essentiels et ne peuvent pas être désactivés.
+                        Ils sont automatiquement supprimés à la fin de votre session ou après 30 minutes d'inactivité.
+                    </p>
+                </section>
+
+                <!-- Droit applicable -->
+                <section>
+                    <h2 style="font-size: 24px; color: var(--primary-dark); margin-bottom: 16px;">
+                        Droit Applicable
+                    </h2>
+                    <p>
+                        Les présentes mentions légales sont régies par le droit français.
+                    </p>
+                    <p>
+                        En cas de litige, compétence exclusive est attribuée aux tribunaux français.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Retour -->
+            <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--beige-light);">
+                <a href="{% url 'home' %}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Retour à l'Accueil
+                </a>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--grey); font-size: 14px; margin-top: 24px;">
+            Dernière mise à jour : 26 Novembre 2025
+        </p>
+    </div>
+</div>
+{% endblock %}

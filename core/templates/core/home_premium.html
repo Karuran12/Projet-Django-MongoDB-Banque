@@ -1,0 +1,487 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Accueil - DjanPay Banque Privée{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Styles spécifiques à la page Home */
+    .hero-section {
+        background: linear-gradient(135deg, rgba(10, 25, 41, 0.97) 0%, rgba(26, 47, 66, 0.95) 100%),
+                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230A1929" width="1200" height="600"/><g fill-opacity="0.03"><circle fill="%23C9A55A" cx="200" cy="100" r="80"/><circle fill="%23D4AF37" cx="800" cy="400" r="120"/><circle fill="%23C9A55A" cx="1000" cy="200" r="60"/></g></svg>');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0 80px;
+        margin-top: 64px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, transparent 0%, rgba(201, 165, 90, 0.05) 100%);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-greeting {
+        font-family: var(--font-serif);
+        font-size: clamp(36px, 5vw, 52px);
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 16px;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-username {
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
+        font-family: var(--font-sans);
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--beige-light);
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+
+    .role-badge-premium {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        backdrop-filter: blur(10px);
+        margin-top: 24px;
+    }
+
+    .role-badge-admin {
+        background: rgba(139, 64, 73, 0.2);
+        border: 2px solid rgba(139, 64, 73, 0.5);
+        color: #FFB8BB;
+    }
+
+    .role-badge-user {
+        background: rgba(74, 124, 89, 0.2);
+        border: 2px solid rgba(74, 124, 89, 0.5);
+        color: #A3D9B1;
+    }
+
+    .dashboard-section {
+        padding: 80px 0;
+        background: var(--ivory);
+    }
+
+    .section-title {
+        font-family: var(--font-serif);
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 600;
+        color: var(--primary-dark);
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--grey);
+        font-size: 16px;
+        margin-bottom: 48px;
+    }
+
+    .menu-card {
+        background: var(--white);
+        border: 1px solid rgba(10, 25, 41, 0.08);
+        border-radius: 12px;
+        padding: 32px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .menu-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-gold);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .menu-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-6px);
+        border-color: var(--secondary-gold);
+    }
+
+    .menu-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--gradient-elegant);
+        color: var(--secondary-gold);
+        font-size: 28px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-card:hover .menu-icon {
+        background: var(--gradient-gold);
+        color: var(--primary-dark);
+        transform: scale(1.1);
+    }
+
+    .menu-card h3 {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--primary-dark);
+        margin-bottom: 12px;
+    }
+
+    .menu-card p {
+        font-size: 14px;
+        color: var(--grey);
+        line-height: 1.6;
+    }
+
+    .stats-section {
+        background: var(--gradient-blue);
+        padding: 64px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stats-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><g fill-opacity="0.03"><circle fill="%23C9A55A" cx="100" cy="300" r="100"/><circle fill="%23D4AF37" cx="900" cy="100" r="80"/></g></svg>');
+        background-size: cover;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 32px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .stat-value {
+        font-family: var(--font-serif);
+        font-size: 40px;
+        font-weight: 700;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: var(--beige-light);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .cta-section {
+        background: var(--white);
+        padding: 64px 0;
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 100px 0 60px;
+        }
+
+        .dashboard-section {
+            padding: 60px 0;
+        }
+
+        .menu-card {
+            padding: 24px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- ============================================
+     HERO SECTION - BIENVENUE
+     ============================================ -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content fade-in">
+            <h1 class="hero-greeting">
+                Bonjour, <span class="hero-username">{{ username }}</span>
+            </h1>
+            <p class="hero-subtitle">
+                Bienvenue dans votre espace personnel DjanPay.<br>
+                Gérez votre patrimoine en toute sérénité et confidentialité.
+            </p>
+
+            <!-- Badge de rôle premium -->
+            <div class="role-badge-premium {% if is_admin %}role-badge-admin{% else %}role-badge-user{% endif %}">
+                {% if is_admin %}
+                    <i class="fas fa-crown"></i>
+                    <span>Administrateur</span>
+                {% else %}
+                    <i class="fas fa-shield-check"></i>
+                    <span>Client Premium</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STATISTIQUES RAPIDES (Si disponibles)
+     ============================================ -->
+{% if is_admin %}
+<section class="stats-section">
+    <div class="container">
+        <div class="grid grid-4">
+            <div class="stat-card fade-in-up animate-delay-1">
+                <div class="stat-value">248</div>
+                <div class="stat-label">Clients Actifs</div>
+            </div>
+            <div class="stat-card fade-in-up animate-delay-2">
+                <div class="stat-value">€2.4M</div>
+                <div class="stat-label">Actifs Gérés</div>
+            </div>
+            <div class="stat-card fade-in-up animate-delay-3">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Satisfaction</div>
+            </div>
+            <div class="stat-card fade-in-up animate-delay-4">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Années d'Expertise</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ============================================
+     DASHBOARD - MENU D'ACTIONS
+     ============================================ -->
+<section class="dashboard-section">
+    <div class="container">
+        <h2 class="section-title">
+            {% if is_admin %}
+                Panneau d'Administration
+            {% else %}
+                Vos Services Premium
+            {% endif %}
+        </h2>
+        <p class="section-subtitle">
+            {% if is_admin %}
+                Gérez l'ensemble de la plateforme depuis votre tableau de bord centralisé
+            {% else %}
+                Accédez à l'ensemble de vos services bancaires en un clic
+            {% endif %}
+        </p>
+
+        <div class="grid grid-4">
+            {% if is_admin %}
+                <!-- Menu Administrateur -->
+                <a href="/admin/" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Gérer les Clients</h3>
+                    <p>Administrez les comptes et les accès utilisateurs</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Statistiques</h3>
+                    <p>Consultez les performances et KPIs en temps réel</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Transactions</h3>
+                    <p>Supervisez l'ensemble des opérations financières</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité</h3>
+                    <p>Audits de sécurité et journaux d'activité</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Configuration</h3>
+                    <p>Paramètres système et personnalisation</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Notifications</h3>
+                    <p>Gérez les alertes et communications</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Rapports</h3>
+                    <p>Générez des rapports personnalisés</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Assistance et gestion des tickets</p>
+                </a>
+
+            {% else %}
+                <!-- Menu Client Premium -->
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Mon Compte</h3>
+                    <p>Consultez vos soldes et mouvements récents</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Virements</h3>
+                    <p>Effectuez des transferts sécurisés</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Investissements</h3>
+                    <p>Gérez votre portefeuille d'investissements</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Historique</h3>
+                    <p>Consultez l'historique de vos transactions</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Mes Cartes</h3>
+                    <p>Gérez vos cartes bancaires premium</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Documents</h3>
+                    <p>Accédez à vos relevés et attestations</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Mon Conseiller</h3>
+                    <p>Contactez votre conseiller personnel</p>
+                </a>
+
+                <a href="#" class="menu-card animate-on-scroll">
+                    <div class="menu-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Mon Profil</h3>
+                    <p>Modifiez vos informations personnelles</p>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CTA SECTION - BESOIN D'AIDE
+     ============================================ -->
+<section class="cta-section">
+    <div class="container container-narrow">
+        <div class="card card-elegant">
+            <h3 style="margin-bottom: 16px;">
+                <i class="fas fa-headset" style="color: var(--secondary-gold);"></i>
+                Besoin d'assistance ?
+            </h3>
+            <p style="margin-bottom: 24px;">
+                Notre équipe de conseillers dédiés est à votre écoute 7j/7<br>
+                pour répondre à toutes vos questions.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Nous Appeler
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Nous Écrire
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

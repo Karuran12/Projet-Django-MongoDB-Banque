@@ -16,6 +16,7 @@ staticfiles/
 local_settings.py
 
 *.bson
+<<<<<<< HEAD
 *.json
 dump/
 
@@ -23,11 +24,37 @@ dump/
 .env.local
 .env.*.local
 
+=======
+dump/
+
+# Variables d'environnement (CRITIQUE - NE JAMAIS COMMIT)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# IDEs
+>>>>>>> 9d7df2e3e8052ed07f44486b78d63f1096939998
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
 
+<<<<<<< HEAD
 .DS_Store
 
 *.log
+=======
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.swp
+*~
+>>>>>>> 9d7df2e3e8052ed07f44486b78d63f1096939998
