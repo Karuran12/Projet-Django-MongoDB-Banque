@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Paramètres du système{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/system_settings.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+    {% include 'sidebar_admin.html' %}
+
+    <main class="main-content">
+
+        <div class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">⚙️</span>
+                    <span class="main-title-text">Paramètres du système</span>
+                </div>
+                <span class="main-subtitle">Configuration globale, sécurité et statistiques</span>
+            </div>
+        </div>
+
+        <!-- PANEL PARAMÈTRES -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Configuration générale</span>
+            </div>
+
+            <form method="POST" class="filter-form">
+                {% csrf_token %}
+
+                <div class="settings-grid">
+
+                    <!-- MONTANT MAX TRANSFERT -->
+                    <div class="settings-item">
+                        <label>Montant maximal de transfert (€) :</label>
+                        {{ form.max_transfer_amount }}
+                        <small class="setting-help">
+                            Limite le montant maximal autorisé pour une seule transaction.
+                            Permet de réduire les risques de fraude ou d’erreurs importantes.
+                        </small>
+                    </div>
+
+                    <!-- LIMITE ECHECS LOGIN -->
+                    <div class="settings-item">
+                        <label>Limite d'échecs de connexion :</label>
+                        {{ form.failed_login_limit }}
+                        <small class="setting-help">
+                            Nombre maximum de tentatives ratées avant le blocage temporaire
+                            d'un compte. Protège contre les attaques par force brute.
+                        </small>
+                    </div>
+
+                    <!-- ACTIVER LOGS -->
+                    <div class="settings-item">
+                        <label>Activer les logs :</label>
+                        {{ form.enable_logs }}
+                        <small class="setting-help">
+                            Enregistre les actions sensibles (connexions, virements, alertes…)
+                            pour faciliter le suivi et les audits de sécurité.
+                        </small>
+                    </div>
+
+                </div>
+
+                <!-- PANEL SÉCURITÉ -->
+                <div class="panel-header" style="margin-top:32px;">
+                    <span class="panel-title">Sécurité renforcée</span>
+                </div>
+
+                <div class="settings-grid">
+
+                    <!-- DURÉE SESSION -->
+                    <div class="settings-item">
+                        <label>Durée session (minutes) :</label>
+                        {{ form.session_timeout_minutes }}
+                        <small class="setting-help">
+                            Durée maximale d’inactivité avant la déconnexion automatique.
+                            Réduit le risque d'accès non autorisé.
+                        </small>
+                    </div>
+
+                    <!-- MOT DE PASSE FORT -->
+                    <div class="settings-item">
+                        <label>Mot de passe fort obligatoire :</label>
+                        {{ form.strong_password_required }}
+                        <small class="setting-help">
+                            Impose des règles strictes sur les mots de passe (longueur,
+                            chiffres, majuscules, symboles) pour garantir une meilleure sécurité.
+                        </small>
+                    </div>
+
+                
+
+                    <!-- INSCRIPTIONS -->
+                    <div class="settings-item">
+                        <label>Autoriser nouvelles inscriptions :</label>
+                        {{ form.allow_registrations }}
+                        <small class="setting-help">
+                            Active ou désactive la création de nouveaux comptes utilisateur.
+                            Utile pour restreindre temporairement l'accès au service.
+                        </small>
+                    </div>
+
+                </div>
+
+                <button class="pill-button pill-button-primary" style="margin-top:25px;">
+                    💾 Enregistrer les paramètres
+                </button>
+            </form>
+        </div>
+
+        <!-- STATS -->
+        <div class="panel" style="margin-top:35px;">
+            <div class="panel-header">
+                <span class="panel-title">Statistiques du système</span>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stats-card">
+                    <div class="stats-value">{{ stats.total_users }}</div>
+                    <div class="stats-label">Utilisateurs enregistrés</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-value">{{ stats.admin_count }}</div>
+                    <div class="stats-label">Administrateurs</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-value">{{ stats.total_balance }} €</div>
+                    <div class="stats-label">Solde total cumulé</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-value">{{ stats.transactions_today }}</div>
+                    <div class="stats-label">Transactions aujourd'hui</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-value">{{ stats.logs_today }}</div>
+                    <div class="stats-label">Alertes sécurité (24h)</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ACTIONS RAPIDES -->
+        <div class="panel" style="margin-top:35px;">
+            <div class="panel-header">
+                <span class="panel-title">Actions rapides</span>
+            </div>
+
+            <div class="actions-grid">
+                <a class="action-button danger" href="#">🗑 Purger les logs</a>
+                <a class="action-button warning" href="#">🧹 Nettoyer transactions anciennes</a>
+                <a class="action-button critical" href="#">⛔ Déconnexion globale</a>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}

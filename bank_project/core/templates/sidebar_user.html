@@ -1,0 +1,47 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">DP</div>
+        <div class="sidebar-title">
+            <span class="sidebar-title-main">DjanPay</span>
+            <span class="sidebar-title-sub">E-Banking</span>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a href="{% url 'dashboard' %}" class="sidebar-link">
+            <div class="sidebar-link-icon">🏠</div>
+            <span>Accueil</span>
+        </a>
+
+        <a href="{% url 'account' %}" class="sidebar-link">
+            <div class="sidebar-link-icon">💰</div>
+            <span>Comptes</span>
+        </a>
+
+        <a href="{% url 'transfer' %}" class="sidebar-link">
+            <div class="sidebar-link-icon">💸</div>
+            <span>Faire un virement</span>
+        </a>
+
+        <a href="{% url 'history' %}" class="sidebar-link">
+            <div class="sidebar-link-icon">📜</div>
+            <span>Historique</span>
+        </a>
+
+        <a href="{% url 'profile' %}" class="sidebar-link">
+            <div class="sidebar-link-icon">👤</div>
+            <span>Profil</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="sidebar-user">
+            <div class="sidebar-user-avatar">{{ user.username|first|upper }}</div>
+            <div class="sidebar-user-info">
+                <div class="sidebar-user-name">{{ user.username }}</div>
+                <div class="sidebar-user-role">Client</div>
+            </div>
+        </div>
+        <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+    </div>
+</div>

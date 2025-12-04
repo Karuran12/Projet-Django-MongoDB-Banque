@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard">
+
+    {% include 'sidebar_user.html' %}
+
+    <main class="main-content">
+
+        <div class="container-profile">
+            <div class="card-profile" style="text-align:center;">
+
+                <h2>⚠️ Supprimer mon compte</h2>
+                <p style="color:#fca5a5; margin-bottom:20px;">
+                    Cette action est définitive et irréversible.
+                </p>
+
+                <form method="POST" action="{% url 'delete_account' %}">
+                    {% csrf_token %}
+                    <button class="btn-danger" style="margin-bottom:10px;">
+                        Oui, supprimer définitivement
+                    </button>
+                </form>
+
+                <a href="{% url 'profile' %}" class="btn-secondary">
+                    Annuler
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+{% endblock %}

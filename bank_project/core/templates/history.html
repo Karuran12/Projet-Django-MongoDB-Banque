@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Historique des transactions{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+    {% include 'sidebar_user.html' %}
+
+    <main class="main-content">
+
+        <header class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">📜</span>
+                    <span class="main-title-text">Historique des transactions</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="history-container">
+
+            <h2>📜 Historique des transactions</h2>
+
+            {% if transactions %}
+                <table class="table-history">
+                    <tr>
+                        <th>Date</th>
+                        <th>Destinataire</th>
+                        <th>Montant</th>
+                        <th>Description</th>
+                    </tr>
+                    {% for t in transactions %}
+                    <tr>
+                        <td>{{ t.timestamp|date:"d/m/Y H:i" }}</td>
+                        <td>{{ t.receiver.username }}</td>
+                        <td class="{% if t.amount < 0 %}debit{% else %}credit{% endif %}">
+                            {{ t.amount }} €
+                        </td>
+                        <td>{{ t.description|default:"-" }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>Aucune opération trouvée.</p>
+            {% endif %}
+        </div>
+
+    </main>
+</div>
+{% endblock %}

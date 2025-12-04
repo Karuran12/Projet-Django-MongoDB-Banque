@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    {% include 'sidebar_user.html' %}
+
+    <main class="main-content">
+
+        <!-- En-tête -->
+        <div class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">💼</span>
+                    <span class="main-title-text">Mon Compte</span>
+                </div>
+                <span class="main-subtitle">Résumé de votre situation financière</span>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- GRID PRINCIPALE -->
+        <div class="grid-main">
+
+            <!-- Colonne : résumé du compte -->
+            <div class="account-summary">
+
+                <div class="account-balance-card">
+                    <div class="account-balance-label">Solde actuel</div>
+                    <div class="account-balance-value">{{ account.balance }} €</div>
+
+                    <div class="account-balance-footer">
+                        <span>Mis à jour automatiquement</span>
+                        <span>✔</span>
+                    </div>
+                </div>
+
+                <div class="account-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Nom du titulaire :</span>
+                        <span class="meta-value">{{ user.username }}</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Type de compte :</span>
+                        <span class="meta-value">Compte courant</span>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="{% url 'transfer' %}" class="quick-action-btn">
+                        <span>
+                            <strong>Faire un virement</strong>
+                            Transférer de l’argent
+                        </span>
+                        <span class="quick-action-icon">💸</span>
+                    </a>
+
+                    <a href="{% url 'history' %}" class="quick-action-btn">
+                        <span>
+                            <strong>Voir l’historique</strong>
+                            Derniers mouvements
+                        </span>
+                        <span class="quick-action-icon">📜</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Colonne : transactions -->
+            <div class="history-container">
+
+                <div class="history-header">
+                    <h2 class="history-title">📜 Vos transactions</h2>
+                </div>
+
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Expéditeur</th>
+                            <th>Destinataire</th>
+                            <th class="transaction-amount">Montant</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for tx in transactions %}
+                        <tr class="transaction-row">
+                            <td>{{ tx.timestamp|date:"d/m/Y H:i" }}</td>
+                            <td>{{ tx.sender.username }}</td>
+                            <td>{{ tx.receiver.username }}</td>
+                            <td class="transaction-amount 
+                                {% if tx.sender == user %}
+                                    amount-negative
+                                {% else %}
+                                    amount-positive
+                                {% endif %}
+                            ">
+                                {{ tx.amount }} €
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" style="padding: 12px; text-align: center; color: #9ca3af;">
+                                Aucune transaction pour le moment.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}

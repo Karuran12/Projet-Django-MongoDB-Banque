@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Audit de sécurité{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    {% include 'sidebar_admin.html' %}
+
+    <main class="main-content">
+
+        <div class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">🛡️</span>
+                    <span class="main-title-text">Audit de sécurité</span>
+                </div>
+                <span class="main-subtitle">Suivi des activités sensibles du système</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Filtres</span>
+            </div>
+
+            <form method="GET">
+                <div class="filter-row">
+                    <input type="text" name="search" class="filter-input" placeholder="Rechercher une action...">
+
+                    <select class="filter-input" name="risk">
+                        <option value="">Tous les risques</option>
+                        <option value="LOW">Faible</option>
+                        <option value="MEDIUM">Moyen</option>
+                        <option value="HIGH">Critique</option>
+                    </select>
+
+                    <button class="pill-button pill-button-primary">🔍 Rechercher</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Table des logs -->
+        <div class="panel" style="margin-top:15px;">
+            <div class="panel-header">
+                <span class="panel-title">Historique des événements</span>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Heure</th>
+                        <th>Utilisateur</th>
+                        <th>Action</th>
+                        <th>IP</th>
+                        <th>Détails</th>
+                        <th>Risque</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ log.timestamp|date:"d/m/Y H:i" }}</td>
+                        <td>{{ log.user.username }}</td>
+                        <td>{{ log.get_action_display }}</td>
+                        <td>{{ log.ip_address|default:"-" }}</td>
+                        <td>{{ log.details|default:"-" }}</td>
+                        <td>
+                            {% if log.risk_level == "LOW" %}
+                                <span class="badge-status badge-success">Faible</span>
+                            {% elif log.risk_level == "MEDIUM" %}
+                                <span class="badge-status badge-pending">Moyen</span>
+                            {% else %}
+                                <span class="badge-status badge-failed">Critique</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;">Aucun événement de sécurité enregistré.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}

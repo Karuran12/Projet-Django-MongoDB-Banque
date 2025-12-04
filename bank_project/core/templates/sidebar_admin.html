@@ -1,0 +1,70 @@
+{% load static %}
+
+<div class="sidebar">
+
+    <div class="sidebar-header">
+        <div class="sidebar-logo">DP</div>
+        <div class="sidebar-title">
+            <span class="sidebar-title-main">DjanPay</span>
+            <span class="sidebar-title-sub">Administration</span>
+        </div>
+    </div>
+
+    <div class="sidebar-badge">ADMIN</div>
+
+    <p class="sidebar-section-label">MENU</p>
+
+    {% with url_name=request.resolver_match.url_name %}
+
+    <nav class="sidebar-nav">
+
+        <a href="{% url 'dashboard' %}"
+           class="sidebar-link {% if url_name == 'dashboard' %}sidebar-link-active{% endif %}">
+            <div class="sidebar-link-icon">🏠</div>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{% url 'admin_panel' %}"
+           class="sidebar-link {% if url_name == 'admin_panel' %}sidebar-link-active{% endif %}">
+            <div class="sidebar-link-icon">👥</div>
+            <span>Gérer les utilisateurs</span>
+        </a>
+
+        <a href="{% url 'transactions_globales' %}"
+           class="sidebar-link {% if url_name == 'transactions_globales' %}sidebar-link-active{% endif %}">
+            <div class="sidebar-link-icon">💳</div>
+            <span>Transactions globales</span>
+        </a>
+
+        <a href="{% url 'audit_securite' %}"
+           class="sidebar-link {% if url_name == 'audit_securite' %}sidebar-link-active{% endif %}">
+            <div class="sidebar-link-icon">🔐</div>
+            <span>Audit de sécurité</span>
+        </a>
+
+        <!-- 🔧 Correction ici : l’URL et le nom interne doivent correspondre -->
+        <a href="{% url 'system_settings' %}"
+           class="sidebar-link {% if url_name == 'system_settings' %}sidebar-link-active{% endif %}">
+            <div class="sidebar-link-icon">⚙️</div>
+            <span>Paramètres système</span>
+        </a>
+
+    </nav>
+
+    {% endwith %}
+
+    <div class="sidebar-bottom">
+        <div class="sidebar-user">
+            <div class="sidebar-user-avatar">
+                {{ request.user.username|first|upper }}
+            </div>
+            <div class="sidebar-user-info">
+                <span class="sidebar-user-name">{{ request.user.username }}</span>
+                <span class="sidebar-user-role">Administrateur</span>
+            </div>
+        </div>
+
+        <a href="{% url 'logout' %}" class="logout-btn">🚪 Déconnexion</a>
+    </div>
+
+</div>

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Transactions Globales{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    {% include 'sidebar_admin.html' %}
+
+    <main class="main-content">
+
+        <div class="main-header">
+            <div class="main-header-left">
+                <div class="main-title-row">
+                    <span class="main-title-icon">💳</span>
+                    <span class="main-title-text">Transactions globales</span>
+                </div>
+                <span class="main-subtitle">Visualisez toutes les transactions effectuées dans le système</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Filtres</span>
+            </div>
+
+            <form method="get" class="filter-form">
+                <div class="filter-row">
+                    <input type="text" name="search" class="filter-input" placeholder="Rechercher par utilisateur, montant ou ID...">
+
+                    <select name="status" class="filter-input">
+                        <option value="">Tous les statuts</option>
+                        <option value="success">✔️ Succès</option>
+                        <option value="failed">❌ Échec</option>
+                        <option value="pending">⏳ En attente</option>
+                    </select>
+
+                    <input type="date" name="date" class="filter-input">
+
+                    <button type="submit" class="pill-button pill-button-primary">🔍 Appliquer</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel" style="margin-top:15px;">
+            <div class="panel-header">
+                <span class="panel-title">Historique complet des transactions</span>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Expéditeur</th>
+                        <th>Destinataire</th>
+                        <th>Montant</th>
+                        <th>Description</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in transactions %}
+                    <tr class="transaction-row">
+                        <td>{{ t.timestamp|date:"d/m/Y H:i" }}</td>
+                        <td>{{ t.sender.username }}</td>
+                        <td>{{ t.receiver.username }}</td>
+                        <td class="transaction-amount
+                            {% if t.amount > 0 %}
+                                amount-positive
+                            {% else %}
+                                amount-negative
+                            {% endif %}
+                        ">
+                            {{ t.amount }} €
+                        </td>
+                        <td>{{ t.description|default:"-" }}</td>
+                        <td>
+                            <span class="badge-status badge-success">✔️ Succès</span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;">Aucune transaction trouvée.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}
